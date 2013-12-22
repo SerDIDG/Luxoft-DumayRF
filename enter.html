@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Думай.рф</title>
+    <link type="text/css" rel="stylesheet" href="styles/common.css">
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+
+    <script type="text/javascript" src="scripts/common.js"></script>
+    <script type="text/javascript" src="scripts/useragent.js"></script>
+    <script type="text/javascript" src="scripts/dialog.js"></script>
+    <script type="text/javascript" src="scripts/oldbrowser.alert.js"></script>
+
+    <script type="text/javascript">
+        cm.onload(function(){
+            // Useragent
+            Useragent.setBrowserClass();
+            // Browser Alert
+            new Com.OldBrowserAlert({'versions' : {'IE' : 9, 'Opera' : 15}});
+        });
+    </script>
+</head>
+<body>
+
+<div class="login-layout">
+    <div class="inner">
+        <dl class="login-block">
+            <dt></dt>
+            <dd>
+                <div class="form">
+                    <dl>
+                        <dd>
+                            <input type="text" name="login" placeholder="Введите логин">
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <input type="password" name="password" placeholder="Введите пароль">
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <div class="check-line">
+                                <input type="checkbox" name="remember" id="remember">
+                                <label for="remember">Оставаться в системе</label>
+                            </div>
+                        </dd>
+                    </dl>
+                    <div class="btn-wrap centered">
+                        <input class="button-big" type="submit" value="ВОЙТИ В СИСТЕМУ">
+                    </div>
+                </div>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+</body>
+</html>
