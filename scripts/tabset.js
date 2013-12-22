@@ -7,7 +7,7 @@ Com['GetTabset'] = function(id){
 Com['Tabset'] = function(o){
 	var that = this,
 		config = cm.merge({
-			'container' : cm.Node('div'),
+			'container' : false,
             'tabset' : false,
             'toggleOnHashChange' : true,
 			'renderOnInit' : true,
@@ -60,7 +60,9 @@ Com['Tabset'] = function(o){
                 hashHandler();
             }
         }else{
-            set(id && tabs[id]? id : ids[0])
+            if(id = id && tabs[id]? id : ids[0]){
+                set(id);
+            }
         }
     };
 
@@ -113,11 +115,11 @@ Com['Tabset'] = function(o){
         cm.forEach(config['tabs'], function(item){
             renderTab(item);
         });
-        /* *** APPENDCHILD NEW TABSET *** */
-        if(config['tabset'] && cm.inDOM(config['tabset'])){
-            cm.insertBefore(nodes['container'], config['tabset']);
-        }else{
+        /* *** INSERT INTO DOM *** */
+        if(config['container']){
             config['container'].appendChild(nodes['container']);
+        }else if(config['tabset'].parentNode){
+            cm.insertBefore(nodes['container'], config['tabset']);
         }
         cm.remove(config['tabset']);
 	};
@@ -148,7 +150,7 @@ Com['Tabset'] = function(o){
         if(config['toggleOnHashChange']){
             item['a'].setAttribute('href', [window.location.href.split('#')[0], item['id']].join('#'));
         }else{
-            item['a'].setAttribute('href', 'javascript:void(0);');
+            //item['a'].setAttribute('href', 'javascript:void(0);');
             item['a'].onclick = function(){
                  set(item['id']);
             };
@@ -213,7 +215,9 @@ Com['Tabset'] = function(o){
 	
 	var hashHandler = function(){
 		var id = window.location.hash.replace('#', '');
-		set(id && tabs[id]? id : ids[0]);
+        if(id = id && tabs[id]? id : ids[0]){
+            set(id);
+        }
 	};
 	
 	/* Main */
@@ -225,7 +229,7 @@ Com['Tabset'] = function(o){
 	
 	that.set = function(id){
         if(id && tabs[id]){
-            set(tabs[id]);
+            set(id);
         }
 		return that;
 	};
@@ -289,7 +293,7 @@ Com['TabsetCollector'] = function(node){
 
     var render = function(node){
         tabsets = cm.clone((node.getAttribute('data-tabset') == 'true') ? [node] : cm.getByAttr('data-tabset', 'true', node));
-        // Render datepickers
+        // Render tabsets
         cm.forEach(tabsets, function(item){
             tabset = new Com.Tabset({'tabset' : item});
             if(id = item.id){

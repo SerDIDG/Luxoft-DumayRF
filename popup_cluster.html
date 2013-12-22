@@ -1,6 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <title>Думай.рф</title>
     <link type="text/css" rel="stylesheet" href="styles/common.css">
     <link type="text/css" rel="stylesheet" href="styles/main.css">
@@ -9,87 +14,107 @@
     <script type="text/javascript" src="scripts/useragent.js"></script>
     <script type="text/javascript" src="scripts/dialog.js"></script>
     <script type="text/javascript" src="scripts/oldbrowser.alert.js"></script>
+    <script type="text/javascript" src="scripts/application.js"></script>
 
     <script type="text/javascript">
         cm.onload(function(){
             // Useragent
             Useragent.setBrowserClass();
             // Browser Alert
-            new Com.OldBrowserAlert({'versions' : {'IE' : 9, 'Opera' : 15}});
+            new Com.OldBrowserAlert({'versions' : {'IE' : 9, 'Opera' : 16}});
+            // Application
+            new App.Application();
             // Popup
             new Com.Dialog({'content' : cm.getEl('dialog'), 'width' : 1000, 'minHeight' : 720, 'maxHeight' : 720, 'margin' : 40, 'scroll' : false});
         });
     </script>
 </head>
-<body>
+<body class="menu-close">
+
+<!-- [* ******* TOPMENU START ******* *] -->
+
+<div class="topmenu">
+    <div class="inner">
+        <div class="menu right">
+            <ul>
+                <li class="has-child">
+                    <a href="javascript:void(0);">Сергей Нарышкин</a>
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0);">Консультант</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Гарант</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Кодекс</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Спарк</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu left">
+            <ul>
+                <li class="has-child">
+                    <a href="javascript:void(0);">Ресурсы</a>
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0);">Консультант</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Гарант</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Кодекс</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Спарк</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu center">
+            <ul>
+                <li>
+                    <a href="javascript:void(0);">Справочная информация</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">Настройка тем</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- [* ******* TOPMENU END ******* *] -->
+
+<div class="wrapper">
 
 <!-- [* ******* HEADER START ******* *] -->
 
 <div class="header">
-    <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="думай.рф">
-    </a>
+    <div class="inner">
+        <a href="index.html" class="logo"></a>
 
-    <!--
-    <div class="search">
-        <input type="text" placeholder="Поиск" maxlength="255">
-        <input type="submit" value="">
-    </div>
-    -->
+        <!--
+        <div class="search">
+            <input type="text" placeholder="Поиск" maxlength="255">
+            <input type="submit" value="">
+        </div>
+        -->
 
-    <div class="menu left">
-        <ul>
-            <li class="has-child">
-                <a href="javascript:void(0);">Ресурсы</a>
-                <ul>
-                    <li>
-                        <a href="javascript:void(0);">Консультант</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">Гарант</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">Кодекс</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">Спарк</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+        <div class="menu-button" data-app-headermenu="button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-    <div class="menu center">
-        <ul>
-            <li>
-                <a href="javascript:void(0);">Справочная информация</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">Настройка тем</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="menu right">
-        <ul>
-            <li class="has-child">
-                <a href="javascript:void(0);">Сергей Нарышкин</a>
-                <ul>
-                    <li>
-                        <a href="javascript:void(0);">Консультант</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">Гарант</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">Кодекс</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">Спарк</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
     </div>
 </div>
 
@@ -99,19 +124,18 @@
 
 <div class="content">
 
-<div class="content-block primary">
-    <div class="title">Главные новости</div>
+<div class="content-block-columns main clear">
+    <div class="content-block secondary">
+        <div class="title">Тема дня</div>
 
-    <div class="descr">
-        <div class="post-main">
-
-            <div class="post-item style1">
+        <div class="descr">
+            <div class="drop-shadow-block post-item style1">
                 <div class="post-image">
                     <img src="images/examples/medium-1.jpg" alt="">
                 </div>
                 <div class="post-descr">
                     <h3><a href="#">Путин попросил увеличить антикризисный резерв правительства</a></h3>
-                    <p>Нефтегазовые компании приостановили работу своих платформ в Мексиканском заливе из-за приближения тропического шторма «Карен». Эвакуированы сотрудники со 185 платформ компаний BP, Chevron и других к югу от Луизианы, что составляет примерно треть от общего количества платформ в Мексиканском заливе.</p>
+                    <p>Нефтегазовые компании приостановили работу своих платформ в Мексиканском. Нефтегазовые компании приостановили работу своих платформ в Мексиканском заливе из-за приближения тропического шторма «Карен». Эвакуированы сотрудники со 185 платформ компаний BP, Chevron и других к югу от Луизианы, что составляет примерно треть от общего количества платформ в Мексиканском заливе.</p>
                 </div>
                 <div class="post-source">
                     <a href="#">РИА Новости</a>
@@ -121,7 +145,13 @@
                     <div class="post-comments">777</div>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <div class="content-block secondary">
+        <div class="title">Последние новости</div>
+
+        <div class="descr">
             <div class="drop-shadow-block post-item style2">
                 <div class="post-descr">
                     <h3><a href="#">Заместитель министра обороны США Эштон Картер подал в отставку. Он официально сложит свои полномочия 4 декабря. Кто станет его преемником на этом посту, а также по каким причинам он покидает пост, пока не сообщаются.</a></h3>
@@ -169,7 +199,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -179,7 +208,7 @@
 
     <div class="descr">
         <div class="drop-shadow-block post-cols three clear">
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-1.jpg" alt="">
                 </div>
@@ -195,7 +224,7 @@
                 </div>
             </div>
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-2.jpg" alt="">
                 </div>
@@ -211,7 +240,7 @@
                 </div>
             </div>
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-3.jpg" alt="">
                 </div>
@@ -229,7 +258,7 @@
         </div>
 
         <div class="drop-shadow-block post-cols three clear">
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-1.jpg" alt="">
                 </div>
@@ -245,7 +274,7 @@
                 </div>
             </div>
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-2.jpg" alt="">
                 </div>
@@ -261,7 +290,7 @@
                 </div>
             </div>
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-3.jpg" alt="">
                 </div>
@@ -290,7 +319,7 @@
     <div class="descr">
         <div class="drop-shadow-block post-cols three clear">
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-1.jpg" alt="">
                 </div>
@@ -306,7 +335,7 @@
                 </div>
             </div>
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-2.jpg" alt="">
                 </div>
@@ -322,7 +351,7 @@
                 </div>
             </div>
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-3.jpg" alt="">
                 </div>
@@ -352,7 +381,7 @@
     <div class="descr">
         <div class="drop-shadow-block post-cols three clear">
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-1.jpg" alt="">
                 </div>
@@ -368,7 +397,7 @@
                 </div>
             </div>
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-2.jpg" alt="">
                 </div>
@@ -384,7 +413,7 @@
                 </div>
             </div>
 
-            <div class="post-item style3">
+            <div class="drop-shadow-block post-item style3">
                 <div class="post-image">
                     <img src="images/examples/small-3.jpg" alt="">
                 </div>
