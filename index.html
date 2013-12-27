@@ -13,6 +13,10 @@
     <script type="text/javascript" src="scripts/common.js"></script>
     <script type="text/javascript" src="scripts/useragent.js"></script>
     <script type="text/javascript" src="scripts/dialog.js"></script>
+    <script type="text/javascript" src="scripts/tooltip.js"></script>
+    <script type="text/javascript" src="scripts/select.js"></script>
+    <script type="text/javascript" src="scripts/calendar.js"></script>
+    <script type="text/javascript" src="scripts/datepicker.js"></script>
     <script type="text/javascript" src="scripts/oldbrowser.alert.js"></script>
     <script type="text/javascript" src="scripts/application.js"></script>
 
@@ -22,6 +26,8 @@
             Useragent.setBrowserClass();
             // Browser Alert
             new Com.OldBrowserAlert({'versions' : {'IE' : 9, 'Opera' : 16}});
+            // Select Collector
+            Com.SelectCollector();
             // Application
             new App.Application();
         });
@@ -31,61 +37,68 @@
 
 <!-- [* ******* TOPMENU START ******* *] -->
 
-<div class="topmenu">
-    <div class="inner">
-        <div class="menu right">
-            <ul>
-                <li class="has-child">
-                    <a href="javascript:void(0);">Сергей Нарышкин</a>
-                    <ul>
-                        <li>
-                            <a href="javascript:void(0);">Консультант</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">Гарант</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">Кодекс</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">Спарк</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+<div class="block-wrapper topmenu-wrapper">
+    <div class="topmenu">
+        <div class="inner">
 
-        <div class="menu left">
-            <ul>
-                <li class="has-child">
-                    <a href="javascript:void(0);">Ресурсы</a>
-                    <ul>
-                        <li>
-                            <a href="javascript:void(0);">Консультант</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">Гарант</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">Кодекс</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">Спарк</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+            <div class="search">
+                <input type="text" placeholder="Поиск" maxlength="255">
+                <input type="submit" value="">
+            </div>
 
-        <div class="menu center">
-            <ul>
-                <li>
-                    <a href="javascript:void(0);">Справочная информация</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">Настройка тем</a>
-                </li>
-            </ul>
+            <div class="menu right">
+                <ul>
+                    <li class="has-child">
+                        <a href="javascript:void(0);">Администратор</a>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);">Изменить пароль</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">Выход</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu left">
+                <ul>
+                    <li class="has-child">
+                        <a href="javascript:void(0);">Ресурсы</a>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);">Консультант</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">Гарант</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">Кодекс</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">Спарк</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu center">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);">Справочная информация</a>
+                    </li>
+                    <li class="has-child">
+                        <a href="javascript:void(0);">Настройки</a>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);">Настройка тем</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -96,23 +109,17 @@
 
 <!-- [* ******* HEADER START ******* *] -->
 
-<div class="header">
-    <div class="inner">
-        <a href="index.html" class="logo"></a>
+<div class="block-wrapper header-wrapper">
+    <div class="header">
+        <div class="inner">
+            <a href="index.html" class="logo"></a>
 
-        <!--
-        <div class="search">
-            <input type="text" placeholder="Поиск" maxlength="255">
-            <input type="submit" value="">
+            <div class="menu-button" data-app-headermenu="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        -->
-
-        <div class="menu-button" data-app-headermenu="button">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
     </div>
 </div>
 
@@ -120,324 +127,474 @@
 
 <!-- [* ******* CONTENT START ******* *] -->
 
-<div class="content">
+<div class="block-wrapper content-wrapper">
+    <div class="content">
 
-    <div class="content-block-columns main clear">
+        <div class="content-block-columns main clear">
+            <div class="content-block secondary">
+                <div class="title">Тема дня</div>
+
+                <div class="descr">
+                    <div class="drop-shadow-block post-item style1">
+                        <div class="post-image">
+                            <img src="images/examples/medium-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Путин попросил увеличить антикризисный резерв правительства</a></h3>
+                            <p>Нефтегазовые компании приостановили работу своих платформ в Мексиканском. Нефтегазовые компании приостановили работу своих платформ в Мексиканском заливе из-за приближения тропического шторма «Карен». Эвакуированы сотрудники со 185 платформ компаний BP, Chevron и других к югу от Луизианы, что составляет примерно треть от общего количества платформ в Мексиканском заливе.</p>
+                        </div>
+                        <div class="post-source">
+                            <a href="#">РИА Новости</a>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block secondary">
+                <div class="title">Главные новости</div>
+
+                <div class="descr">
+                    <div class="drop-shadow-block post-item style2">
+                        <div class="post-image">
+                            <img src="images/examples/small-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Заместитель министра обороны США Эштон Картер подал в отставку. Он официально сложит свои полномочия 4 декабря. Кто станет его преемником на этом посту, а также по каким причинам он покидает пост, пока не сообщаются.</a></h3>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-source">
+                                <a href="#">РИА Новости</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drop-shadow-block post-item style2">
+                        <div class="post-image">
+                            <img src="images/examples/small-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-source">
+                                <a href="#">РИА Новости</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drop-shadow-block post-item style2">
+                        <div class="post-image">
+                            <img src="images/examples/small-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-source">
+                                <a href="#">РИА Новости</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drop-shadow-block post-item style2">
+                        <div class="post-image">
+                            <img src="images/examples/small-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Банк по ошибке перечислил жителю Техаса четыре триллиона долларов</a></h3>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-source">
+                                <a href="#">РИА Новости</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="more">
+                    <a class="button">Показать ещё<span>С 1 ПО 9</span></a>
+                </div>
+            </div>
+        </div>
+
         <div class="content-block secondary">
-            <div class="title">Тема дня</div>
+            <div class="title has-full-filter">
+                <div class="l">Правительство<span class="counter">10</span></div>
+
+                <div class="r">
+                    <div class="move-buttons">
+                        <div class="up"></div>
+                        <div class="sep"></div>
+                        <div class="down"></div>
+                    </div>
+                    <div class="sep"></div>
+                    <div class="remove-button"></div>
+                    <div class="sep"></div>
+                    <div class="sorting">
+                        <div class="text">Сортировка:</div>
+                        <div class="select">
+                            <select class="small">
+                                <option>Заметность в СМИ</option>
+                                <option>Рейтинг в социальных сетях</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sep"></div>
+                </div>
+            </div>
 
             <div class="descr">
-                <div class="drop-shadow-block post-item style1">
-                    <div class="post-image">
-                        <img src="images/examples/medium-1.jpg" alt="">
+                <div class="drop-shadow-block post-cols three clear">
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Российских зрителей попросят включить смартфоны в кино</a></h3>
+                        </div>
+                        <div class="post-source">
+                            <a href="#">РИА Новости</a>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
                     </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Путин попросил увеличить антикризисный резерв правительства</a></h3>
-                        <p>Нефтегазовые компании приостановили работу своих платформ в Мексиканском. Нефтегазовые компании приостановили работу своих платформ в Мексиканском заливе из-за приближения тропического шторма «Карен». Эвакуированы сотрудники со 185 платформ компаний BP, Chevron и других к югу от Луизианы, что составляет примерно треть от общего количества платформ в Мексиканском заливе.</p>
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-2.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
+                        </div>
+                        <div class="post-source">
+                            <a href="#">Аргументы и Факты</a>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
                     </div>
-                    <div class="post-source">
-                        <a href="#">РИА Новости</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-3.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
+                        </div>
+                        <div class="post-source">
+                            <a href="#">РИА Новости</a>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
                     </div>
                 </div>
+
+                <div class="drop-shadow-block post-cols three clear">
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Российских зрителей попросят включить смартфоны в кино</a></h3>
+                        </div>
+                        <div class="post-source">
+                            <a href="#">РИА Новости</a>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
+                    </div>
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-2.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
+                        </div>
+                        <div class="post-source">
+                            <a href="#">Аргументы и факты</a>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
+                    </div>
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-3.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
+                        </div>
+                        <div class="post-source">
+                            <a href="#">РИА Новости</a>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="more">
+                <a class="button">Показать все (86)</a>
             </div>
         </div>
 
         <div class="content-block secondary">
-            <div class="title">Последние новости</div>
+            <div class="title has-full-filter">
+                <div class="l">Правительство<span class="counter">10</span></div>
+
+                <div class="r">
+                    <div class="move-buttons">
+                        <div class="up"></div>
+                        <div class="sep"></div>
+                        <div class="down"></div>
+                    </div>
+                    <div class="sep"></div>
+                    <div class="remove-button"></div>
+                    <div class="sep"></div>
+                    <div class="sorting">
+                        <div class="text">Сортировка:</div>
+                        <div class="select">
+                            <select class="small">
+                                <option>Заметность в СМИ</option>
+                                <option>Рейтинг в социальных сетях</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sep"></div>
+                </div>
+            </div>
 
             <div class="descr">
-                <div class="drop-shadow-block post-item style2">
-                    <div class="post-descr">
-                        <h3><a href="#">Заместитель министра обороны США Эштон Картер подал в отставку. Он официально сложит свои полномочия 4 декабря. Кто станет его преемником на этом посту, а также по каким причинам он покидает пост, пока не сообщаются.</a></h3>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
+                <div class="drop-shadow-block post-cols three clear">
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Российских зрителей попросят включить смартфоны в кино</a></h3>
+                        </div>
                         <div class="post-source">
                             <a href="#">РИА Новости</a>
                         </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="drop-shadow-block post-item style2">
-                    <div class="post-descr">
-                        <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-2.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
+                        </div>
+                        <div class="post-source">
+                            <a href="#">Аргументы и факты</a>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
                     </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-3.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
+                        </div>
                         <div class="post-source">
                             <a href="#">РИА Новости</a>
                         </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="drop-shadow-block post-item style2">
-                    <div class="post-descr">
-                        <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
+                </div>
+            </div>
+
+            <div class="more">
+                <a class="button">Показать все (86)</a>
+            </div>
+        </div>
+
+        <div class="content-block secondary">
+            <div class="title has-full-filter">
+                <div class="l">Правительство<span class="counter">10</span></div>
+
+                <div class="r">
+                    <div class="move-buttons">
+                        <div class="up"></div>
+                        <div class="sep"></div>
+                        <div class="down"></div>
                     </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
+                    <div class="sep"></div>
+                    <div class="remove-button"></div>
+                    <div class="sep"></div>
+                    <div class="sorting">
+                        <div class="text">Сортировка:</div>
+                        <div class="select">
+                            <select class="small">
+                                <option>Заметность в СМИ</option>
+                                <option>Рейтинг в социальных сетях</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sep"></div>
+                </div>
+            </div>
+
+            <div class="descr">
+                <div class="drop-shadow-block post-cols three clear">
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Российских зрителей попросят включить смартфоны в кино</a></h3>
+                        </div>
                         <div class="post-source">
                             <a href="#">РИА Новости</a>
                         </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="drop-shadow-block post-item style2">
-                    <div class="post-descr">
-                        <h3><a href="#">Банк по ошибке перечислил жителю Техаса четыре триллиона долларов</a></h3>
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-2.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
+                        </div>
+                        <div class="post-source">
+                            <a href="#">Аргументы и факты</a>
+                        </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
                     </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-3.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
+                        </div>
                         <div class="post-source">
                             <a href="#">РИА Новости</a>
                         </div>
+                        <div class="post-stuff">
+                            <div class="post-date">13:13 13 марта 2013</div>
+                            <div class="post-comments">777</div>
+                        </div>
                     </div>
+
                 </div>
             </div>
+
+            <div class="more">
+                <a class="button">Показать все (86)</a>
+            </div>
         </div>
+
     </div>
-
-    <div class="content-block secondary">
-        <div class="title">Правительство</div>
-
-        <div class="descr">
-            <div class="drop-shadow-block post-cols three clear">
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-1.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Российских зрителей попросят включить смартфоны в кино</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">РИА Новости</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-2.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">Аргументы и Факты</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-3.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">РИА Новости</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="drop-shadow-block post-cols three clear">
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-1.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Российских зрителей попросят включить смартфоны в кино</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">РИА Новости</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-2.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">Аргументы и факты</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-3.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">РИА Новости</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="more">
-            <a class="button" href="javascript:void(0);">Показать все (86)</a>
-        </div>
-    </div>
-
-    <div class="content-block secondary">
-        <div class="title">Внешняя политика</div>
-
-        <div class="descr">
-            <div class="drop-shadow-block post-cols three clear">
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-1.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Российских зрителей попросят включить смартфоны в кино</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">РИА Новости</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-2.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">Аргументы и факты</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-3.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">РИА Новости</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="more">
-            <a class="button" href="javascript:void(0);">Показать все (86)</a>
-        </div>
-    </div>
-
-    <div class="content-block secondary">
-        <div class="title">Выборы</div>
-
-        <div class="descr">
-            <div class="drop-shadow-block post-cols three clear">
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-1.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Российских зрителей попросят включить смартфоны в кино</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">РИА Новости</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-2.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">Аргументы и факты</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-                <div class="drop-shadow-block post-item style3">
-                    <div class="post-image">
-                        <img src="images/examples/small-3.jpg" alt="">
-                    </div>
-                    <div class="post-descr">
-                        <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
-                    </div>
-                    <div class="post-source">
-                        <a href="#">РИА Новости</a>
-                    </div>
-                    <div class="post-stuff">
-                        <div class="post-date">13:13 13 марта 2013</div>
-                        <div class="post-comments">777</div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="more">
-            <a class="button" href="javascript:void(0);">Показать все (86)</a>
-        </div>
-    </div>
-
 </div>
 
 <!-- [* ******* CONTENT END ******* *] -->
+
+<!-- [* ******* SUBSCRIBE START ******* *] -->
+
+<div class="block-wrapper subscribe-wrapper">
+    <div class="subscribe">
+        <div class="block-title">Подписка на сообщения схожей тематики</div>
+
+        <div class="content-block secondary">
+            <div class="title has-filter">
+                <div class="l">Правительство<span class="counter">10</span></div>
+
+                <div class="r">
+                    <div class="move-buttons">
+                        <div class="up"></div>
+                        <div class="sep"></div>
+                        <div class="down"></div>
+                    </div>
+                    <div class="sep"></div>
+                    <div class="remove-button"></div>
+                    <div class="sep"></div>
+                </div>
+            </div>
+
+            <div class="sub-title">Микроскопическая демократия для России</div>
+
+            <div class="descr">
+                <div class="drop-shadow-block post-cols three clear">
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-1.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Российских зрителей попросят включить смартфоны в кино</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-2.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Обама продлил программу предоставления виз иракским союзникам...</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="drop-shadow-block post-item style3">
+                        <div class="post-image">
+                            <img src="images/examples/small-3.jpg" alt="">
+                        </div>
+                        <div class="post-descr">
+                            <h3><a href="#">Мужчина совершил попытку самосожжения возле Капитолия</a></h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- [* ******* SUBSCRIBE END ******* *] -->
 
 </div>
 

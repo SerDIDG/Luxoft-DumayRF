@@ -160,7 +160,7 @@ Com['Datepicker'] = function(o){
         // Render tooltip
         components['menu'] = new Com.Tooltip({
             'className' : 'cm-datepicker-tooltip',
-            'width' : 'targetWidth',
+            /* 'width' : 'targetWidth', */
             'top' : ['targetHeight', config['menuMargin']].join('+'),
             'content' : nodes['menuContainer'],
             'target' : nodes['container'],

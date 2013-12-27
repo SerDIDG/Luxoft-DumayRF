@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>Думай.рф</title>
+    <link type="text/css" rel="stylesheet" href="styles/common.css">
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+
+    <script type="text/javascript" src="scripts/common.js"></script>
+    <script type="text/javascript" src="scripts/useragent.js"></script>
+    <script type="text/javascript" src="scripts/dialog.js"></script>
+    <script type="text/javascript" src="scripts/tooltip.js"></script>
+    <script type="text/javascript" src="scripts/select.js"></script>
+    <script type="text/javascript" src="scripts/calendar.js"></script>
+    <script type="text/javascript" src="scripts/datepicker.js"></script>
+    <script type="text/javascript" src="scripts/oldbrowser.alert.js"></script>
+    <script type="text/javascript" src="scripts/application.js"></script>
+
+    <script type="text/javascript">
+        cm.onload(function(){
+            // Useragent
+            Useragent.setBrowserClass();
+            // Browser Alert
+            new Com.OldBrowserAlert({'versions' : {'IE' : 9, 'Opera' : 16}});
+            // Application
+            new App.Application();
+            // Select Collector
+            Com.SelectCollector();
+            // Datepickers
+            new Com.Datepicker({
+                'input' : cm.getEl('date-from'),
+                'saveFormat' : '%d/%m/%Y'
+            });
+            new Com.Datepicker({
+                'input' : cm.getEl('date-to'),
+                'saveFormat' : '%d/%m/%Y'
+            });
+        });
+    </script>
+</head>
+<body class="menu-close">
+
+<!-- [* ******* TOPMENU START ******* *] -->
+
+<div class="block-wrapper topmenu-wrapper">
+    <div class="topmenu">
+        <div class="inner">
+
+            <div class="search">
+                <input type="text" placeholder="Поиск" maxlength="255">
+                <input type="submit" value="">
+            </div>
+
+            <div class="menu right">
+                <ul>
+                    <li class="has-child">
+                        <a href="javascript:void(0);">Администратор</a>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);">Изменить пароль</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">Выход</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu left">
+                <ul>
+                    <li class="has-child">
+                        <a href="javascript:void(0);">Ресурсы</a>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);">Консультант</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">Гарант</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">Кодекс</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">Спарк</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu center">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);">Справочная информация</a>
+                    </li>
+                    <li class="has-child">
+                        <a href="javascript:void(0);">Настройки</a>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);">Настройка тем</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- [* ******* TOPMENU END ******* *] -->
+
+<div class="wrapper">
+
+<!-- [* ******* HEADER START ******* *] -->
+
+<div class="block-wrapper header-wrapper">
+    <div class="header">
+        <div class="inner">
+            <a href="index.html" class="logo"></a>
+
+            <div class="menu-button" data-app-headermenu="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- [* ******* HEADER END ******* *] -->
+
+<!-- [* ******* CONTENT START ******* *] -->
+
+<div class="block-wrapper content-wrapper">
+    <div class="content">
+
+        <div class="content-block">
+            <div class="title">
+                <div class="l">Справочная информация</div>
+            </div>
+
+            <div class="descr">
+                <div class="drop-shadow-block">
+                    <form class="form help-filter-form">
+                        <dl>
+                            <dt>Поиск</dt>
+                            <dd>
+                                <select class="type">
+                                    <option value="date">по дате</option>
+                                    <option value="author">по автору</option>
+                                </select>
+                                <input class="date" type="text" data-datepicker="true" id="date-from" placeholder="с">
+                                <input class="date" type="text" data-datepicker="true" id="date-to" placeholder="по">
+                                <!--
+                                <select class="authors">
+                                    <option value="date">по дате</option>
+                                    <option value="author">по автору</option>
+                                </select>
+                                 -->
+                                <div class="buttons">
+                                    <input type="submit" value="Поиск">
+                                    <input type="reset" value="Сброс">
+                                </div>
+                            </dd>
+                        </dl>
+                    </form>
+                </div>
+
+                <div class="drop-shadow-block">
+                    <div class="cms-menu" data-rv-node="menuNode">
+                        <span class="active" data-rv-node="publishedMenuItem" data-rv-event="click:openCategory(published)">Опубликованые</span>
+                        |
+                        <span data-rv-node="archiveMenuItem" data-rv-event="click:openCategory(archive)">Архив</span>
+                        |
+                        <span data-rv-node="blockedMenuItem" data-rv-event="click:openCategory(blocked)">Заблокированные</span>
+                    </div>
+                </div>
+
+                <div class="content-columns">
+                    <div class="l">
+                        <div data-rv-event="click:openArticle" class="cms-item active">
+                            <span data-rv-model-prop="prop:innerHTML(Title_Decoded)">Проект регламента эксплуатации системы</span>
+                        </div>
+                        <div data-rv-event="click:openArticle" class="cms-item">
+                            <span data-rv-model-prop="prop:innerHTML(Title_Decoded)">Справочные ресурсы</span>
+                        </div>
+                        <div class="cms-item" data-rv-event="click:addArticleButton">
+                            <img src="images/small_add.png" class="cms-add-article">Добавить статью
+                        </div>
+                    </div>
+                    <div class="r">
+                        Put Content Here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- [* ******* CONTENT END ******* *] -->
+
+</div>
+
+</body>
+</html>

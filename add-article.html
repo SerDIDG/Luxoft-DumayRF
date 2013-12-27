@@ -25,7 +25,7 @@
             // Application
             new App.Application();
             // Popup
-            new Com.Dialog({'content' : cm.getEl('dialog'), 'width' : 650, 'minHeight' : 650, 'maxHeight' : 650, 'margin' : 40, 'scroll' : false});
+            new Com.Dialog({'content' : cm.getEl('dialog'), 'title' : 'Добавление статьи', 'width' : 800, 'margin' : 40});
         });
     </script>
 </head>
@@ -595,90 +595,91 @@
 </div>
 
 <div class="display-none">
-    <div class="settings-layout" id="dialog">
-        <div class="l">
-            <div class="title">ВЫБЕРИТЕ КАТЕГОРИЮ</div>
-            <div class="inner">
-                <ul class="menu">
-                    <li>
-                        <a>
-                            <span>ПРАВИТЕЛЬСТВО</span><span class="amount">0</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span>КОМИТЕТ</span><span class="amount">99</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span>ДЕПУТАТ</span><span class="amount">123</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span>ПОЛИТИКА</span><span class="amount">5</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a>
-                            <span>Комитеты и комиссии Государственной Думы</span><span class="amount">10</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="r">
-            <div class="title">ВЫБЕРИТЕ ТЕМЫ</div>
-            <div class="inner">
-                <div class="single-filter">
-                    <input type="text">
-                    <div class="icon clear-input"></div>
+    <div id="dialog">
+        <div class="dialog-content">
+            <form class="form">
+                <dl>
+                    <dt>Название:</dt>
+                    <dd>
+                        <input type="text">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Текст:</dt>
+                    <dd>
+                        <textarea></textarea>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Изображение:</dt>
+                    <dd>
+                        <div class="browse-button">
+                            <input type="button" value="Обзор">
+                            <div class="inner">
+                                <input type="file">
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Архивная:</dt>
+                    <dd>
+                        <input type="checkbox" data-rv-model-prop="prop:checked(IsArchive)" value="true" name="IsArchive">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Заблокированная:</dt>
+                    <dd>
+                        <input type="checkbox" data-rv-model-prop="prop:checked(IsBlocked)" value="true" name="IsBlocked">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Добавить документ:</dt>
+                    <dd>
+                        <div class="files-list">
+                            <ul>
+                                <li>
+                                    <input type="button" value="Удалить">
+                                    <div class="text">photo_with_me_and_headcrab.jpg</div>
+                                </li>
+                                <li>
+                                    <input type="button" value="Удалить">
+                                    <div class="text">photo_with_me_and_g-man.jpg</div>
+                                </li>
+                                <li>
+                                    <input type="button" value="Удалить">
+                                    <div class="text">photo_with_me_and_headcrab.jpg</div>
+                                </li>
+                                <li>
+                                    <input type="button" value="Удалить">
+                                    <div class="text">photo_with_me_and_g-man.jpg</div>
+                                </li>
+                                <li>
+                                    <input type="button" value="Удалить">
+                                    <div class="text">photo_with_me_and_headcrab.jpg</div>
+                                </li>
+                                <li>
+                                    <input type="button" value="Удалить">
+                                    <div class="text">photo_with_me_and_g-man.jpg</div>
+                                </li>
+                                <li>
+                                    <input type="button" value="Удалить">
+                                    <div class="text">photo_with_me_and_headcrab.jpg</div>
+                                </li>
+                            </ul>
+                            <div class="browse-button">
+                                <input type="button" value="Обзор">
+                                <div class="inner">
+                                    <input type="file">
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <div class="btn-wrap">
+                    <input type="submit" value="Создать">
                 </div>
-                <div class="check-multiselect">
-                    <ul>
-                        <li class="letter">A</li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c1">
-                                <label for="c1">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c2">
-                                <label for="c2">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c3">
-                                <label for="c3">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li class="letter">Б</li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c4">
-                                <label for="c4">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c5">
-                                <label for="c5">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c6">
-                                <label for="c6">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

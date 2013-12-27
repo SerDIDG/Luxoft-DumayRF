@@ -25,7 +25,7 @@
             // Application
             new App.Application();
             // Popup
-            new Com.Dialog({'content' : cm.getEl('dialog'), 'width' : 650, 'minHeight' : 650, 'maxHeight' : 650, 'margin' : 40, 'scroll' : false});
+            new Com.Dialog({'content' : cm.getEl('dialog'), 'title' : 'Опции пользователя', 'width' : 450, 'margin' : 40});
         });
     </script>
 </head>
@@ -595,90 +595,51 @@
 </div>
 
 <div class="display-none">
-    <div class="settings-layout" id="dialog">
-        <div class="l">
-            <div class="title">ВЫБЕРИТЕ КАТЕГОРИЮ</div>
-            <div class="inner">
-                <ul class="menu">
-                    <li>
-                        <a>
-                            <span>ПРАВИТЕЛЬСТВО</span><span class="amount">0</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span>КОМИТЕТ</span><span class="amount">99</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span>ДЕПУТАТ</span><span class="amount">123</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span>ПОЛИТИКА</span><span class="amount">5</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a>
-                            <span>Комитеты и комиссии Государственной Думы</span><span class="amount">10</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="r">
-            <div class="title">ВЫБЕРИТЕ ТЕМЫ</div>
-            <div class="inner">
-                <div class="single-filter">
-                    <input type="text">
-                    <div class="icon clear-input"></div>
+    <div id="dialog">
+        <div class="dialog-content">
+            <form class="form">
+                <dl class="form-box">
+                    <dt>Интервал отображения новостей:</dt>
+                    <dd>
+                        <div class="check-line">
+                            <input id="user-options-news-updates-interval_3hours" type="radio" name="interval" data-rv-node="newsUpdatesInterval_3hours" checked>
+                            <label for="user-options-news-updates-interval_3hours">3 часа</label>
+                        </div>
+                        <div class="check-line">
+                            <input id="user-options-news-updates-interval_24hours" type="radio" name="interval" data-rv-node="newsUpdatesInterval_24hours">
+                            <label for="user-options-news-updates-interval_24hours">Cутки</label>
+                        </div>
+                        <div class="check-line">
+                            <input id="user-options-news-updates-interval_week" type="radio" name="interval" data-rv-node="newsUpdatesInterval_week">
+                            <label for="user-options-news-updates-interval_week">Неделя</label>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="form-box">
+                    <dt>Сортировка новостей:</dt>
+                    <dd>
+                        <div class="check-line">
+                            <input id="user-options-sort-rank-fast" type="radio" value="1" name="sort" data-rv-node="newsSortType_1" checked>
+                            <label for="user-options-sort-rank-fast">Заметность в СМИ</label>
+                        </div>
+                        <div class="check-line">
+                            <input id="user-options-sort-social-rating" type="radio" value="2" name="sort" data-rv-node="newsSortType_2">
+                            <label for="user-options-sort-social-rating">Рейтинг в социальных сетях</label>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        <div class="check-line">
+                            <input id="user-options-email-notifications" type="checkbox" data-rv-node="emailNotifications" checked>
+                            <label for="user-options-email-notifications">Получать обновления новостей на электронную почту</label>
+                        </div>
+                    </dd>
+                </dl>
+                <div class="btn-wrap">
+                    <input type="submit" value="Сохранить">
                 </div>
-                <div class="check-multiselect">
-                    <ul>
-                        <li class="letter">A</li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c1">
-                                <label for="c1">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c2">
-                                <label for="c2">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c3">
-                                <label for="c3">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li class="letter">Б</li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c4">
-                                <label for="c4">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c5">
-                                <label for="c5">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="check-line">
-                                <input type="checkbox" id="c6">
-                                <label for="c6">АПОЛИТИЧНЫЙ</label>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
