@@ -1,0 +1,130 @@
+body {
+    min-width: 900px;
+}
+
+/* *** HEADER *** */
+
+.topmenu {
+    position: relative;
+}
+.topmenu > .inner {
+    position: relative;
+}
+.topmenu .menu > ul > li {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 0 2px;
+    float: left;
+}
+
+.topmenu .menu > ul > li.has-child > a {
+    padding: 0 30px 0 16px;
+    -webkit-transition: none;
+    transition: none;
+}
+.topmenu .menu > ul > li.has-child > a:after {
+    width: 7px;
+    height: 4px;
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: url(../images/arrow-bottom.png);
+    content: ' ';
+}
+.topmenu .menu > ul > li.has-child:hover > a {
+    color: #c5c5c5;
+    color: rgba(127,127,127,0.5);
+    background: transparent;
+    box-shadow: none;
+    cursor: default;
+}
+.topmenu .menu > ul > li.has-child:hover > a:after {
+    opacity: 0.5;
+}
+
+.topmenu .menu ul ul {
+    min-width: 100%;
+    display: none;
+    margin: 0;
+    padding: 32px 6px 12px;
+    position: absolute;
+    z-index: 1;
+    left: -6px;
+    top: -6px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.35);
+    list-style: none;
+}
+.topmenu .menu ul li:hover > ul {
+    display: block;
+}
+.topmenu .menu ul ul li {
+}
+.topmenu .menu ul ul li a {
+    display: block;
+    padding: 0 16px;
+    border-radius: 0;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 24px;
+    font-size: 14px;
+    color: #7f7f7f;
+}
+.topmenu .menu ul ul li a:hover {
+    color: #d13529;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* *** CONTENT *** */
+
+/* Content Block Columns */
+
+.content-block-columns {
+    overflow: hidden;
+}
+.content-block-columns .content-block {
+    margin: 0;
+    box-shadow: none;
+}
+.content-block-columns.main .content-block {
+    float: left;
+    width: 50%;
+}
+.content-block-columns.main .content-block > .descr {
+    box-shadow: -1px 0 2px rgba(0, 0, 0, 0.2);
+}
+.content-block-columns.main .content-block > .more {
+    padding: 16px 0;
+    box-shadow: -1px 0 2px rgba(0, 0, 0, 0.2);
+}
+.content-block-columns.main .content-block:first-child .descr {
+    height: 488px;
+    box-shadow: none;
+}
+.content-block-columns.main .content-block > .title {
+    border-radius: 0;
+}
+
+/* Post Columns */
+
+.post-cols.three > .post-item {
+    padding: 0;
+    box-shadow: none;
+}
+
+
+@media only screen and (min-width : 981px) {
+
+    /* Content Block Columns */
+
+    .content-block-columns.main .content-block {
+        width: 54%;
+    }
+    .content-block-columns.main .content-block:first-child {
+        width: 46%;
+    }
+
+}
